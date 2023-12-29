@@ -1,0 +1,22 @@
+mat-card {
+    background-color: rgb(230, 230, 230);
+    margin: 5px;
+    min-height: 200px;
+}
+
+.card-main {
+    margin-top: 5px;
+}
+
+.btn-div {
+    margin: 15px;
+    display: flex;
+    justify-content: end;
+}
+
+.delete-btn {
+    color: rgb(197, 6, 6);
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+}

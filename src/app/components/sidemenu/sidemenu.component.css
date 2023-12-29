@@ -1,0 +1,20 @@
+.container {
+    margin: 10px;
+}
+
+.sidenav-container {
+    margin-top: 20px !important;
+    margin-bottom: 2px !important;
+    background-color: rgb(236, 236, 236);
+    min-width: 240px !important;
+    max-width: 240px !important;
+    border-radius: 10px !important;
+    position: fixed;
+}
+
+.sidenav {
+    margin: 10px;
+    background-color: rgb(255, 255, 255) !important;
+    display: flex;
+    justify-content:space-around;
+}

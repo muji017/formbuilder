@@ -1,0 +1,37 @@
+.login {
+    display: flex;
+    justify-content: center;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.menu-list li {
+    margin-right: 20px;
+    /* Adjust the margin as needed */
+}
+
+.menu-list a {
+    text-decoration: none;
+
+    color: rgb(117, 117, 117);
+}
+
+.menu-list a:hover {
+    color: rgb(0, 0, 0);
+}
+
+.spacer {
+    flex: 1;
+}
+
+.active-link {
+    border-bottom: 2px solid blue;
+}
+.arrow:hover{
+    cursor: pointer;
+}

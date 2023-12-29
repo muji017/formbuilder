@@ -1,0 +1,29 @@
+<ng-container *ngIf="isLoginPage(); else otherContent">
+    <mat-toolbar class="login">
+      Welcome to login page
+    </mat-toolbar>
+  </ng-container>
+  
+  <ng-template #otherContent>
+    <mat-toolbar>
+      <div>
+        <ul class="menu-list">
+          <li>
+            <a [routerLink]="['/dashboard']" routerLinkActive="active-link">Dashboard</a>
+          </li>
+          <li>
+            <a [routerLink]="['/forms']" routerLinkActive="active-link">Forms</a>
+          </li>
+        </ul>
+      </div>
+      <span class="spacer"></span>
+      <div>
+        <mat-icon class="profile-icon">account_circle</mat-icon>
+      </div>
+      <mat-icon class="arrow" [matMenuTriggerFor]="profileMenu">keyboard_arrow_down</mat-icon>
+      <mat-menu #profileMenu="matMenu">
+        <button mat-menu-item (click)="onLogout()">Logout</button>
+      </mat-menu>
+    </mat-toolbar>
+  </ng-template>
+  
