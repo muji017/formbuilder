@@ -16,6 +16,11 @@ import { CreateFormComponent } from './components/create-form/create-form.compon
 import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
 import { CreateFieldComponent } from './components/create-field/create-field.component';
 import { ToastrModule, provideToastr } from 'ngx-toastr';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './store/effects';
+import { InterceptorService } from './interceptor/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -34,17 +39,26 @@ import { ToastrModule, provideToastr } from 'ngx-toastr';
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     FlexLayoutModule,
+    ToastrModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
+    EffectsModule.forFeature([UserEffects]),
   ],
   providers: [
     provideToastr({
       timeOut: 2000,
-      positionClass: 'toast-center-center',
       preventDuplicates: true,
       progressBar: true
     }),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

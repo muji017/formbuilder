@@ -16,5 +16,8 @@ export class HeaderComponent {
   isLoginPage(){
     return this.router.url=='/login'
   }
-  onLogout(){}
+  onLogout(){
+    localStorage.removeItem('user')
+    window.location.reload()
+  }
 }

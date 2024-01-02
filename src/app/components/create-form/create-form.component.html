@@ -1,16 +1,26 @@
+
 <div class="main">
     <div>
         <app-sidemenu></app-sidemenu>
     </div>
     <div class="body">
-        <div class="form-div" (drop)="drop($event)" (dragover)="allowDrop($event)">
-            <h1 class="form-header"></h1>
-            <div class="form-body">
-
-            </div>
-        </div>
         <div>
-
+            <div style="display: flex;justify-content: center;">
+                <h4>
+                    Drag and drop the form fields to create forms
+                </h4>
+            </div>
+            <div class="form-div" (drop)="drop($event)" (dragover)="allowDrop($event)">
+                <h1 class="form-header">{{formname}}</h1>
+                <form [formGroup]="form" (submit)="save()">
+                <div class="form-body" id="formContainer" [ngClass]="{'hide-image': hasContent}">
+                    
+                       <img src="../assets/drag.jpg">
+                </div>
+                
+                <button mat-raised-button type="submit">Create Form</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class CreateDialogComponent {
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
-    // private toastr:ToastrService,
+    private toastr:ToastrService,
     private dialog: MatDialog,
     private service: UserService,
   ) { }
@@ -43,7 +44,7 @@ export class CreateDialogComponent {
     if (!this.form.valid) {
 
       if (this.nameValid()) {
-        // this.toastr.warning(this.emailValid())
+        this.toastr.warning(this.nameValid())
         return
       }
     }

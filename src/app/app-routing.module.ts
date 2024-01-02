@@ -4,14 +4,15 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsComponent } from './components/forms/forms.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreateFormComponent } from './components/create-form/create-form.component';
+import { HomeAuthGuard,LoginAuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'forms', component: FormsComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'forms/createform/:name', component: CreateFormComponent }
+  { path: 'login', component: LoginComponent,canActivate:[LoginAuthGuard] },
+  { path: 'forms', component: FormsComponent,canActivate:[HomeAuthGuard]},
+  { path: 'dashboard', component: DashboardComponent,canActivate:[HomeAuthGuard] },
+  { path: 'forms/createform/:name', component: CreateFormComponent,canActivate:[HomeAuthGuard] }
 
 ];
 

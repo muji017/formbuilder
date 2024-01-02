@@ -8,13 +8,13 @@
     <ng-container>
       <mat-form-field class="ancho" appearance="fill">
         <mat-label for="textField">{{fieldName}} Label:</mat-label>
-        <input [(ngModel)]="fieldLebel" type="text" matInput autocomplete="off" id="{{fieldName}}">
+        <input [(ngModel)]="fieldLabel" type="text" matInput autocomplete="off" id="{{fieldLabel}}">
       </mat-form-field>
     </ng-container>
 
     <mat-form-field *ngIf="fieldName==='checkBox'||fieldName==='dropBox'" class="ancho" appearance="fill">
       <mat-label for="dropBoxLabel">{{fieldName}} Option:</mat-label>
-      <input type="text" [(ngModel)]="option" matInput autocomplete="off" id="{{fieldName}}Options">
+      <input type="text" [(ngModel)]="option" matInput autocomplete="off" >
     </mat-form-field>
     <div *ngIf="fieldName==='checkBox'||fieldName==='dropBox'" style="display: flex; justify-content: end;">
       <h4>Add Option</h4>
@@ -24,7 +24,7 @@
       <ul >
         <li class="ul-li-heading">{{fieldName}} options</li>
         <li style="margin-left: 15px;" *ngFor="let option of options">
-          <a>{{option}}</a><mat-icon (click)="removeOption(options.indexOf(option))" style="color: red;">close</mat-icon>
+          <a>{{option}}</a><mat-icon (click)="removeOption(options.indexOf(option))" style="color: red; cursor: pointer;">close</mat-icon>
         </li>
       </ul>
     </div>

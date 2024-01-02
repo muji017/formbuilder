@@ -1,3 +1,4 @@
+<div class="head">
 <ng-container *ngIf="isLoginPage(); else otherContent">
     <mat-toolbar class="login">
       Welcome to login page
@@ -9,10 +10,10 @@
       <div>
         <ul class="menu-list">
           <li>
-            <a [routerLink]="['/dashboard']" routerLinkActive="active-link">Dashboard</a>
+            <a [routerLink]="['/dashboard']"  routerLinkActive="active-link"><mat-icon matTooltip="Dashboard">dashboard</mat-icon></a>
           </li>
           <li>
-            <a [routerLink]="['/forms']" routerLinkActive="active-link">Forms</a>
+            <a [routerLink]="['/forms']" routerLinkActive="active-link"><mat-icon matTooltip="Forms" >assignment</mat-icon></a>
           </li>
         </ul>
       </div>
@@ -26,4 +27,4 @@
       </mat-menu>
     </mat-toolbar>
   </ng-template>
-  
+  </div>

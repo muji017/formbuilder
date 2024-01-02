@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { ToastrService } from 'ngx-toastr';
+import { userModel } from 'src/app/model/user.model';
 import { UserService } from 'src/app/services/user.service';
+import { loginStart } from 'src/app/store/action';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +17,9 @@ export class LoginComponent {
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
-    // private toastr:ToastrService,
+    private toastr:ToastrService,
     private service: UserService,
+    private userStore:Store<userModel>
   ) {
 
   }
@@ -22,7 +27,7 @@ export class LoginComponent {
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: this.formBuilder.control('', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]),
-      password: this.formBuilder.control('', Validators.required)
+      password: this.formBuilder.control('',Validators.required)
     })
   }
 
@@ -44,6 +49,12 @@ export class LoginComponent {
       if (password.errors.required) {
         return 'Please enter your password'
       }
+      // if(password.errors.minlength){
+      //   return 'Password required minimum six length'
+      // }
+      // if(password.errors.pattern){
+      //   return 'Password should contain one charactor one number and one special character'
+      // }
     }
   }
 
@@ -52,17 +63,18 @@ export class LoginComponent {
   login() {
     const email: string = this.loginForm.get('email')?.value
     const password: string = this.loginForm.get('password')?.value
+    
     if (!this.loginForm.valid) {
-
       if (this.emailValid()) {
-        // this.toastr.warning(this.emailValid())
+        this.toastr.warning(this.emailValid())
         return
       }
       if (this.passwordValid()) {
-        // this.toastr.warning(this.passwordValid())
+        this.toastr.warning(this.passwordValid())
         return
       }
     }
+   this.userStore.dispatch(loginStart({email,password})) 
     // this.service.login(email,password).subscribe(
     //   (response)=>{
     //     const trainer={
