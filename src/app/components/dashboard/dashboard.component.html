@@ -1,1 +1,13 @@
-<p>dashboard works!</p>
+<div class="main-div">
+    <div class="sub-div" style="display: block;">
+        <h2 *ngIf="forms.length<=0">
+            No forms data to display 
+        </h2>
+        <canvas  baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+               ></canvas>
+      </div>
+</div>

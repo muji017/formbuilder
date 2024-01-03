@@ -12,9 +12,11 @@ export class HeaderComponent {
   constructor(private router:Router){
        this.isLoginPage()
   }
-  tog(){}
   isLoginPage(){
     return this.router.url=='/login'
+  }
+  isSignUpPage(){
+    return this.router.url=='/signup'
   }
   onLogout(){
     localStorage.removeItem('user')

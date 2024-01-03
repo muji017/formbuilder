@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateFieldComponent } from '../create-field/create-field.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MatInput } from '@angular/material/input';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
@@ -25,6 +25,7 @@ export class CreateFormComponent {
   constructor(
     private dialoge: MatDialog,
     private route: ActivatedRoute,
+    private router:Router,
     private toastr:ToastrService,
     private formBuilder:FormBuilder,
     private service:UserService
@@ -119,15 +120,16 @@ export class CreateFormComponent {
   save(){
     console.log("textBox",this.textBox,"  dropBox",this.dropBox, "  checkBox",this.checkBox);
     const formDate={
+      formName:this.formname,
       textbox:this.textBox,
       dropBox:this.dropBox,
       checkBox:this.checkBox
     }
     this.service.createForm(formDate).subscribe((res)=>{
-      console.log(res);
-      
+      this.toastr.success("done")
+      this.router.navigate(['/forms']); 
     })
-    this.toastr.success("done")
+  
   }
 
 

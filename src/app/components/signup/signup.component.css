@@ -1,0 +1,33 @@
+.body {
+    display: flex;
+    padding-top: 50px;
+    align-items: center;
+    justify-content: center;
+  }
+  .login {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    margin: 10px;
+    text-align: center;
+    box-shadow: 2px 2px 4px #000000;
+
+    border-radius: 6px;
+  }
+
+  .ancho {
+    width: 80%;
+  }
+  .button{
+    width: 30%;
+    height: 30px;
+    border-radius: 10px !important;
+    background-color:  #525252 !important;
+    color: #ffffff !important;
+  }
+  .button:hover {
+    background: linear-gradient(to bottom, #777777, #c7c7c7) !important;
+    color: #000000 !important;
+    cursor: pointer;
+  }

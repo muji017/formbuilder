@@ -1,73 +1,46 @@
 <div class="btn-div">
-    <button matTooltip="Create a form" mat-raised-button (click)="create()">Create Form</button>	
+  <button matTooltip="Create a form" mat-raised-button (click)="create()">Create Form</button>
 </div>
 <div class="main-div">
-<div class="card-main" fxLayout="row wrap" fxLayout.xs="column"  fxLayoutAlign="center center" >
-    <mat-card  fxFlex.xs="50%" fxFlex.md="30%" fxFlex.lg="23%">
+  <div  class="card-main" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center center">
+    <h2 *ngIf="forms.length<=0">
+      No forms data to display, create a form
+  </h2>
+    <mat-card *ngFor="let form of forms" fxFlex.xs="50%" fxFlex.md="30%" fxFlex.lg="23%">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>HEAD</mat-card-title>
-        <mat-card-subtitle>dkcfbdjfnjd</mat-card-subtitle>
+        <mat-card-title>{{form.formName}}</mat-card-title>
+        <mat-card-subtitle>
+            <div *ngIf="form.textbox && form.textbox.length >= 1">
+              <div class="form-field" *ngFor="let fieldName of form.textbox">
+                <label>{{ fieldName }}</label>
+                <input  />
+              </div>
+            </div>
+            <div *ngIf="form.dropBox && form.dropBox.length >= 1">
+            <div class="form-field" *ngFor="let field of form.dropBox">
+              <label>{{ field.head }}</label>
+              <select >
+                <option *ngFor="let option of field.options" [value]="option">{{ option }}</option>
+              </select>
+            </div>
+            </div>
+            <div *ngIf="form.checkBox && form.checkBox.length >= 1">
+            <div class="form-field" *ngFor="let field of form.checkBox">
+              <label>{{ field.head }}</label>
+              <div *ngFor="let option of field.options; let i = index">
+                <label>
+                  <input type="checkbox"  />
+                  {{ option }}
+                </label>
+              </div>
+              </div>
+            </div>
+        </mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image  alt="Photo ">
-      <mat-card-content>
-        <p>elqfnkelmfk;lqwmflw;dmw;lqdmwldmklqwfn</p>
-      </mat-card-content>
-      <div class="delete-btn" >
-        <mat-icon>delete</mat-icon>
+      <div class="delete-btn">
+        <mat-icon matTooltip="Delete from" style="cursor: pointer;" (click)="delete(form._id)">delete</mat-icon>
       </div>
     </mat-card>
-
-    <mat-card  fxFlex.xs="50%" fxFlex.md="30%" fxFlex.lg="23%">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>HEAD</mat-card-title>
-          <mat-card-subtitle>dkcfbdjfnjd</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image  alt="Photo ">
-        <mat-card-content>
-          <p>elqfnkelmfk;lqwmflw;dmw;lqdmwldmklqwfn</p>
-        </mat-card-content>
-        <div class="delete-btn" >
-          <mat-icon>delete</mat-icon>
-        </div>
-      </mat-card>
-
-    <mat-card fxFlex.xs="50%" fxFlex.md="30%" fxFlex.lg="23%">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>HEAD</mat-card-title>
-          <mat-card-subtitle>dkcfbdjfnjd</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image  alt="Photo ">
-        <mat-card-content>
-          <p>elqfnkelmfk;lqwmflw;dmw;lqdmwldmklqwfn</p>
-        </mat-card-content>
-      </mat-card>
-
-      <mat-card fxFlex.xs="50%" fxFlex.md="30%" fxFlex.lg="23%">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>HEAD</mat-card-title>
-          <mat-card-subtitle>dkcfbdjfnjd</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image  alt="Photo ">
-        <mat-card-content>
-          <p>elqfnkelmfk;lqwmflw;dmw;lqdmwldmklqwfn</p>
-        </mat-card-content>
-      </mat-card>
-       
-      <mat-card fxFlex.xs="50%" fxFlex.md="30%" fxFlex.lg="23%">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>HEAD</mat-card-title>
-          <mat-card-subtitle>dkcfbdjfnjd</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image  alt="Photo ">
-        <mat-card-content>
-          <p>elqfnkelmfk;lqwmflw;dmw;lqdmwldmklqwfn</p>
-        </mat-card-content>
-      </mat-card>
-
   </div>
-  </div>
+</div>

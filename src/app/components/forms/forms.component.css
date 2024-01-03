@@ -1,7 +1,10 @@
 mat-card {
     background-color: rgb(230, 230, 230);
     margin: 5px;
-    min-height: 200px;
+    min-height: 300px;
+    max-height: 300px;
+    overflow-y:auto ;
+    overflow-x:hidden;
 }
 
 .card-main {
@@ -17,6 +20,16 @@ mat-card {
 .delete-btn {
     color: rgb(197, 6, 6);
     position: absolute;
-    bottom: 8px;
-    right: 8px;
+    margin-top: 8px;
 }
+
+::ng-deep .form-label {
+    font-size: medium !important;
+  }
+  
+  ::ng-deep .form-field {
+    border-radius: 10px;
+    border: 1px solid gray;
+    padding: 10px !important;
+    margin: 10px !important;
+  }

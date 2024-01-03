@@ -1,7 +1,7 @@
 <div class="head">
-<ng-container *ngIf="isLoginPage(); else otherContent">
+<ng-container *ngIf="isLoginPage()||isSignUpPage(); else otherContent">
     <mat-toolbar class="login">
-      Welcome to login page
+      Welcome to Form builder
     </mat-toolbar>
   </ng-container>
   

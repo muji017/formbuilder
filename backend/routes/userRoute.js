@@ -8,7 +8,13 @@ const bodyparser=require('body-parser');
 userRoute.use(bodyparser.json());
 userRoute.use(bodyparser.urlencoded({extended:true}));
 
+// user
 userRoute.post('/login',userController.login)
+userRoute.post('/signup',userController.signUp)
+
+// forms
 userRoute.post('/createForm',auth.checkAuth,formController.createForm)
+userRoute.get('/getForms',auth.checkAuth,formController.getForms)
+userRoute.delete('/deleteForm',auth.checkAuth,formController.deleteForm)
 
 module.exports=userRoute

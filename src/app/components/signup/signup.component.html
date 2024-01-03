@@ -1,22 +1,26 @@
 <div class="body">
     <div class="login " >
-        <form [formGroup]="loginForm" (ngSubmit)="login()">
-            <div class="flex flex-col items-center">
-                <!-- <img src="../../../assets/images/iconlogin.png" width="40%"> -->
+        <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+            <div>
                 <h1 style="font-weight: bolder;">
-                    Login
+                    SignUp
                 </h1>
             </div>
             <mat-form-field class="ancho" appearance="fill">
-                <mat-label class="text-sm">Enter your Email</mat-label>
+                <mat-label >Enter your Email</mat-label>
                 <input class="no-focus-ring" type="text" matInput autocomplete="off" formControlName="email">
             </mat-form-field>
             <mat-form-field class="ancho" appearance="fill">
-                <mat-label class="text-sm">Enter your Password</mat-label>
+                <mat-label >Enter your Password</mat-label>
                 <input class="no-focus-ring" type="password" matInput autocomplete="off" formControlName="password">
             </mat-form-field>
 
-            <p>Create an account...<a routerLink="/signup">Click here</a></p>
+            <mat-form-field class="ancho" appearance="fill">
+                <mat-label >Confirm Password</mat-label>
+                <input matInput type="password" class="no-focus-ring" formControlName="repassword">
+            </mat-form-field>
+
+            <p>Already have account..<a routerLink="/login">Click here</a></p>
             <button class="button" type="submit" mat-raised-button mat-button >Submit</button>
         </form>
     </div>

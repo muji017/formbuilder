@@ -1,0 +1,10 @@
+.main-div{
+width: 100%;
+display: flex;
+justify-content: center;
+}
+.sub-div{
+    width: 60%;
+    height: 60%;
+}
+

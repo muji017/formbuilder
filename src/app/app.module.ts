@@ -21,6 +21,10 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/effects';
 import { InterceptorService } from './interceptor/interceptor.service';
+import { allFormsReducer } from './store/reducer';
+import { formsStateName } from './store/selector';
+import { NgChartsModule } from 'ng2-charts';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +36,11 @@ import { InterceptorService } from './interceptor/interceptor.service';
     CreateDialogComponent,
     CreateFormComponent,
     SidemenuComponent,
-    CreateFieldComponent
+    CreateFieldComponent,
+    SignupComponent
   ],
   imports: [
+    NgChartsModule,
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
@@ -47,6 +53,7 @@ import { InterceptorService } from './interceptor/interceptor.service';
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     EffectsModule.forFeature([UserEffects]),
+    StoreModule.forFeature(formsStateName ,allFormsReducer),
   ],
   providers: [
     provideToastr({
